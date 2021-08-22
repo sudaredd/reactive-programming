@@ -1,2 +1,2 @@
 # reactive-programming
-Created sample services and used various operators from Flux and Mono from reactor 3
+Created sample services and used various Flux and Mono operators from reactor 3
