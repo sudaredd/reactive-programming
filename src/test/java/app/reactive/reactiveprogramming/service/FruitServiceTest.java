@@ -2,6 +2,7 @@ package app.reactive.reactiveprogramming.service;
 
 import org.junit.jupiter.api.Test;
 import reactor.test.StepVerifier;
+import reactor.tools.agent.ReactorDebugAgent;
 
 class FruitServiceTest {
 
@@ -178,6 +179,8 @@ class FruitServiceTest {
 
     @Test
     void fruitFluxOnErrorMap() {
+        ReactorDebugAgent.init();
+        ReactorDebugAgent.processExistingClasses();
         var fruits = fruitService.fruitFluxOnErrorMap();
         StepVerifier.create(fruits)
             .expectNext("Apple")
