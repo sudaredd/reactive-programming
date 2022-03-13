@@ -70,13 +70,14 @@ public class Consumer {
         .subscribeOn(subscribeOnScheduler)
         .publishOn(publishOnScheduler)
         .flatMap(
-            val -> Mono.fromSupplier(
-                    () -> {
-                      sleep(delayBetweenConsumes);
-                      log.info("consumed {}", val.payload);
-                      return null;
-                    })
-                .subscribeOn(flatMapScheduler))
+            val ->
+                Mono.fromSupplier(
+                        () -> {
+                          sleep(delayBetweenConsumes);
+                          log.info("consumed {}", val.payload);
+                          return null;
+                        })
+                    .subscribeOn(flatMapScheduler))
         .subscribe();
 
     sleep(100000);
